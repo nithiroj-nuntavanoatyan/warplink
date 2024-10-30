@@ -6,9 +6,17 @@ import { getDocs } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import Warpcard from "./Warpcard";
 
+// Define an interface for the warp data
+interface WarpData {
+    id: string;
+    category: string;
+    dateCreatedAt: string; // Change this according to your actual Firestore document structure
+    // Add other properties according to your Firestore document structure
+}
+
 function Searchbar() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState<WarpData[]>([]); // Specify the type here
     const [showNoResults, setShowNoResults] = useState(false);
 
     const searchBar = async () => {
@@ -22,7 +30,7 @@ function Searchbar() {
             );
 
             const querySnapshot = await getDocs(q);
-            const results = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            const results: WarpData[] = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id } as WarpData)); // Type assertion
             setSearchResults(results);
             setShowNoResults(results.length === 0);
         } catch (error) {
@@ -61,7 +69,7 @@ function Searchbar() {
             <div className="searchresult place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
                 {searchResults.length > 0 ? (
                     searchResults.map((result) => (
-                        <Warpcard key={result.id} warpdata={result} />
+                        <Warpcard key={result.id} warpdata={result} warpId={result} />
                     ))
                 ) : showNoResults && (
                     <div className="noresult text-lg text-center">
@@ -74,3 +82,4 @@ function Searchbar() {
 }
 
 export default Searchbar;
+
