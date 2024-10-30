@@ -6,7 +6,7 @@ import { db } from "@/config/firebase";
 import Warpcard from "@/components/Warpcard";
 
 function Home() {
-  const [warps, setWarps] = useState([]);
+  const [warps, setWarps] = useState<Array<{ id: string;[key: string]: any }>>([]); // กำหนดชนิดข้อมูลให้เป็น array ของ object
   const [isLoading, setIsLoading] = useState(true); // Start loading
 
   useEffect(() => {
@@ -36,28 +36,26 @@ function Home() {
             วาป
             <div className=''>
               <ul className='nav-items text-lg md:text-2xl font-bold text-[#e9f6f4] xl:flex uppercase'>
-                <li>
+                <li className="flex ">
                   <Link href="/pages/addwarp">
                     <span className='flex items-center p-2 xl:p-3'>
-                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
+                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background text-2xl p-2">
                         AddWarp
                       </button>
-                      <Link href="/pages/search">
-                        <span className='flex items-center p-2 xl:p-3'>
-                          <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
-                            Search
-                          </button>
-                        </span>
-                      </Link>
+                    </span>
+                  </Link>
+                  <Link href="/pages/search">
+                    <span className='flex items-center p-2 xl:p-3'>
+                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background text-2xl p-2">
+                        Search
+                      </button>
                     </span>
                   </Link>
                 </li>
               </ul>
             </div>
-
           </div>
         </div>
-
 
         {/* Warppart */}
         <div>
