@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -7,7 +7,8 @@ import { db } from "@/config/firebase";
 import Warpcard from "@/components/Warpcard";
 
 function Home() {
-  const [warps, setWarps] = useState<Array<{ id: string;[key: string]: any }>>([]); // กำหนดชนิดข้อมูลให้เป็น array ของ object
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [warps, setWarps] = useState<{ id: string; [key: string]: any }[]>([]);
   const [isLoading, setIsLoading] = useState(true); // Start loading
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function Home() {
       },
       (error) => {
         console.error("Error fetching warps:", error);
-        setIsLoading(false); // Ensure loading is stopped on error
+        setIsLoading(false);
       }
     );
 
@@ -37,17 +38,17 @@ function Home() {
             วาป
             <div className=''>
               <ul className='nav-items text-lg md:text-2xl font-bold text-[#e9f6f4] xl:flex uppercase'>
-                <li className="flex ">
+                <li className="flex space-x-2">
                   <Link href="/pages/addwarp">
                     <span className='flex items-center p-2 xl:p-3'>
-                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background text-2xl p-2">
+                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
                         AddWarp
                       </button>
                     </span>
                   </Link>
                   <Link href="/pages/search">
                     <span className='flex items-center p-2 xl:p-3'>
-                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background text-2xl p-2">
+                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
                         Search
                       </button>
                     </span>
@@ -76,3 +77,4 @@ function Home() {
 }
 
 export default Home;
+
