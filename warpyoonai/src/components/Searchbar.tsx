@@ -9,9 +9,11 @@ import Warpcard from "./Warpcard";
 // Define an interface for the warp data
 interface WarpData {
     id: string;
+    title: string; // เพิ่มคุณสมบัติที่ขาดไป
+    link: string;  // เพิ่มคุณสมบัติที่ขาดไป
     category: string;
+    description: string; // เพิ่มคุณสมบัติที่ขาดไป
     dateCreatedAt: string; // Change this according to your actual Firestore document structure
-    // Add other properties according to your Firestore document structure
 }
 
 function Searchbar() {
@@ -70,7 +72,7 @@ function Searchbar() {
             <div className="searchresult place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
                 {searchResults.length > 0 ? (
                     searchResults.map((result) => (
-                        <Warpcard key={result.id} warpdata={result} warpId={result} />
+                        <Warpcard key={result.id} warpdata={result} warpId={result.id} /> 
                     ))
                 ) : showNoResults && (
                     <div className="noresult text-lg text-center">
@@ -83,5 +85,6 @@ function Searchbar() {
 }
 
 export default Searchbar;
+
 
 
