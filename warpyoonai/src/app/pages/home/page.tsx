@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -6,9 +5,18 @@ import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import Warpcard from "@/components/Warpcard";
 
+// กำหนดอินเทอร์เฟซสำหรับ Warp Data
+interface WarpData {
+  id: string;
+  title: string;
+  link: string;
+  category: string;
+  description: string;
+  dateCreatedAt: string; // วันที่สร้าง
+}
+
 function Home() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [warps, setWarps] = useState<{ id: string; [key: string]: any }[]>([]);
+  const [warps, setWarps] = useState<WarpData[]>([]); // ใช้ WarpData[] แทน { id: string; [key: string]: any }[]
   const [isLoading, setIsLoading] = useState(true); // Start loading
 
   useEffect(() => {
@@ -16,7 +24,10 @@ function Home() {
       query(collection(db, "warps"), orderBy("dateCreatedAt", "desc")),
       (snapshot) => {
         setIsLoading(true);
-        const retrievedWarps = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const retrievedWarps = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as WarpData[]; // ใช้ Type Assertion ให้ชัดเจน
         setWarps(retrievedWarps);
         setIsLoading(false);
       },
@@ -77,4 +88,5 @@ function Home() {
 }
 
 export default Home;
+
 
