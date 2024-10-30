@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { db } from '@/config/firebase';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
+import Link from 'next/link';
 
 
 function Page() {
@@ -40,7 +41,7 @@ function Page() {
 
 
   return (
-    <form action="addwarp" className='text-[#e9f6f4] flex justify-center text-center items-center md:' onSubmit={handleSubmit}>
+    <form action="addwarp" className='text-[#e9f6f4] flex justify-center text-center items-center ' onSubmit={handleSubmit}>
       <div className='w-5/6 mx md:w-2/6 lg:w-3/4 p-4 text-lg sm:text-2xl font-semibold'>
         <div className="p-4">
         <h1 className="text-3xl sm:text-5xl font-bold mb-4">Add New Warp</h1>
@@ -85,11 +86,28 @@ function Page() {
           />
         </div>
         <button
-          className="bg-[#9cd7ce] text-[#060f0d] p-2 rounded hover:bg-[#4b69b7]"
+          className="bg-[#9cd7ce] text-[#060f0d] p-2 rounded "
         >
           Add Warp
         </button>
       </div>
+      <div className=' text-[#e9f6f4] flex justify-center text-center items-center '>
+        <Link href='/pages/home'>
+      <button
+          className="bg-[#060f0d] text-[#9cd7ce] p-2 m-4 rounded "
+        >
+          Home
+        </button>
+      </Link>
+      <Link href='/pages/home'>
+      <button
+          className="bg-[#060f0d] text-[#9cd7ce] p-2 m-4 rounded "
+        >
+          Search
+        </button>
+      </Link>
+      </div>
+      
       </div>
     </form>
   );

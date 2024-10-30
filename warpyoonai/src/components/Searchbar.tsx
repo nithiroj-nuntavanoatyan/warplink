@@ -50,7 +50,7 @@ function Searchbar() {
                                 required
                             />
                             <button
-                                className="searchbutton m-2 bg-[#305577] p-2 rounded-md text-white text-2xl md:text-4xl"
+                                className="searchbutton m-2 bg-[#305577] p-3 rounded-md text-white text-2xl md:text-4xl"
                             >
                                 <span className="flex items-center">ค้นหา</span>
                             </button>

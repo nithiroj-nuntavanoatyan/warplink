@@ -1,32 +1,32 @@
 'use client'
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-// import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
-// import { db } from "@/config/firebase";
-// import Warpcard from "@/components/Warpcard";
+import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
+import { db } from "@/config/firebase";
+import Warpcard from "@/components/Warpcard";
 
 function Home() {
-//   const [warps, setWarps] = useState([]);
-//   const [isLoading, setIsLoading] = useState(true); // Start loading
+  const [warps, setWarps] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Start loading
 
-//   useEffect(() => {
-//     const unSubscribe = onSnapshot(
-//       query(collection(db, "warps"), orderBy("dateCreatedAt", "desc")),
-//       (snapshot) => {
-//         setIsLoading(true);
-//         const retrievedWarps = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-//         setWarps(retrievedWarps);
-//         setIsLoading(false);
-//       },
-//       (error) => {
-//         console.error("Error fetching warps:", error);
-//         setIsLoading(false); // Ensure loading is stopped on error
-//       }
-//     );
+  useEffect(() => {
+    const unSubscribe = onSnapshot(
+      query(collection(db, "warps"), orderBy("dateCreatedAt", "desc")),
+      (snapshot) => {
+        setIsLoading(true);
+        const retrievedWarps = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setWarps(retrievedWarps);
+        setIsLoading(false);
+      },
+      (error) => {
+        console.error("Error fetching warps:", error);
+        setIsLoading(false); // Ensure loading is stopped on error
+      }
+    );
 
-//     // Cleanup function to unsubscribe from the listener
-//     return () => unSubscribe();
-//   }, []); // Empty dependency array to run only once
+    // Cleanup function to unsubscribe from the listener
+    return () => unSubscribe();
+  }, []); // Empty dependency array to run only once
 
   return (
     <div>
@@ -50,7 +50,7 @@ function Home() {
         
 
         {/* Warppart */}
-        {/* <div>
+        <div>
           <div className="cardcategory place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {isLoading ? (
               <h1 className="loadingtext text-3xl font-semibold text-center items-center">กำลังโหลดข้อมูล</h1>
@@ -60,7 +60,7 @@ function Home() {
               ))
             )}
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
