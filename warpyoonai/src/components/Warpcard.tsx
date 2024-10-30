@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Deletewarp from "./Deletewarp";
 
 const Warpcard = ({ warpdata, warpId }) => {
