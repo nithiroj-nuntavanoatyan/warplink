@@ -8,7 +8,7 @@ function Navbar() {
                 <Link href="/">Warpyoonai 😭</Link>
                     
                 </div>
-                <ul className="nav-items text-lg md:text-2xl font-bold text-[#e9f6f4] xl:flex uppercase  ">
+                <ul className="nav-items text-lg md:text-2xl font-bold text-[#e9f6f4] xl:flex uppercase">
                    <li><Link href="/pages/home"><span className='flex items-center xl:p-3'>Home</span></Link></li>
                    {/* <li><Link href="/pages/category"><span className='flex items-center xl:p-3'>Category</span></Link></li> */}
                    <li><Link href="/pages/addwarp"><span className='flex items-center xl:p-3'>Addwarp</span></Link></li>

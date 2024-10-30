@@ -32,22 +32,32 @@ function Home() {
     <div>
       <div className=''>
         <div className='items-center justify-items-center m-4'>
-          <div className="headername flex justify-center items-center text-3xl md:text-6xl font-black text-[#e9f6f4] uppercase">
-          วาป
-          <ul>
-            <li>
-              <Link href="/pages/addwarp">
-                <span className='flex items-center p-2 xl:p-3'>
-                  <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
-                    เพิ่มวาป
-                  </button>
-                </span>
-              </Link>
-            </li>
-          </ul>
+          <div className="headername flex justify-between items-center text-3xl md:text-6xl font-black text-[#e9f6f4] uppercase">
+            วาป
+            <div className=''>
+              <ul className='nav-items text-lg md:text-2xl font-bold text-[#e9f6f4] xl:flex uppercase'>
+                <li>
+                  <Link href="/pages/addwarp">
+                    <span className='flex items-center p-2 xl:p-3'>
+                      <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
+                        AddWarp
+                      </button>
+                      <Link href="/pages/search">
+                        <span className='flex items-center p-2 xl:p-3'>
+                          <button className="bg-[#9cbbe2] rounded-2xl border-4 border-solid flex items-center justify-center bg-foreground text-background gap-2 text-2xl p-2">
+                            Search
+                          </button>
+                        </span>
+                      </Link>
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+          </div>
         </div>
-        </div>
-        
+
 
         {/* Warppart */}
         <div>
