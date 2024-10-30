@@ -16,7 +16,6 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "WarpYooNai😭",
-  description: "Home of Warp",
 };
 
 export default function RootLayout({
@@ -50,3 +49,4 @@ export default function RootLayout({
     </html>
   );
 }
+
