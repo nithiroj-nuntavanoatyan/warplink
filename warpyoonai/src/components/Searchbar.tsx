@@ -38,7 +38,8 @@ function Searchbar() {
         }
     };
 
-    const handleSearchSubmit = (e) => {
+    // Specify the type for the event parameter
+    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         searchBar();
     };
@@ -82,4 +83,5 @@ function Searchbar() {
 }
 
 export default Searchbar;
+
 
